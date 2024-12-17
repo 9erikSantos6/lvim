@@ -10,6 +10,9 @@ package.path = package.path .. ";" .. os.getenv("HOME") .. "/.config/lvim/?.lua"
 -- Load delay:
 vim.opt.timeoutlen = 50
 
+-- Window:
+lvim.transparent_window = true
+
 -- Global:
 vim.opt.mouse = "a"
 
