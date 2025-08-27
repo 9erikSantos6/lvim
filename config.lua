@@ -18,3 +18,22 @@ vim.opt.mouse = "a"
 
 -- My sets:
 require("keymaps").setup()
+
+-- configurações de clipboard para Fedora com Wayland
+local is_fedora = os.execute("[ -f /etc/fedora-release ]") == 0
+local is_wayland = os.getenv("WAYLAND_DISPLAY") ~= nil
+
+if is_fedora and is_wayland then
+  vim.g.clipboard = {
+    name = 'wl-clipboard',
+    copy = {
+      ['+'] = 'wl-copy',
+      ['*'] = 'wl-copy',
+    },
+    paste = {
+      ['+'] = 'wl-paste -p',
+      ['*'] = 'wl-paste -p',
+    },
+    cache_enabled = 0,
+  }
+end
